@@ -1,6 +1,7 @@
 const discord = require('discord.js')
 const bot = new discord.Client()
 const prefix = "h:"
+require('mongoose').connect(`mongodb+srv://Testing-User:${process.env.mongoPass}@testing-cluster-8wurz.mongodb.net/test?retryWrites=true`, { useNewUrlParser: true })
 bot.commands = new discord.Collection()
 
 require('fs').readdir('./commands/', (err, files) => {
@@ -11,7 +12,7 @@ require('fs').readdir('./commands/', (err, files) => {
 })
 
 bot.on('ready', () => {
-  console.log(bot.user)
+  console.log(bot.user.username)
   bot.user.setActivity(`for h:help | Hulkbot Remake`, {type: "WATCHING"})
 })
 
