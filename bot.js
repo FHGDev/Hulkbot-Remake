@@ -21,6 +21,10 @@ bot.on('message', message => {
   const log_cmd = mArray[0].slice(prefix.length)
   const cmd = bot.commands.get(log_cmd)
   
+  if (!message.content.startsWith(prefix)) return;
+  if (!message.author.bot) return;
+  if (!message.guild) return;
+  
   if (cmd) {
     cmd.execCmd(bot, message, args)
     console.log(`${message.author.username} used the ${log_cmd} command.`);
