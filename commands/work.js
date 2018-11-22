@@ -3,17 +3,16 @@ const Money = require('../models/money.js')
 
 module.exports.execCmd = (bot, message, args) => {
   const randomcash = Math.ceil(Math.random() * 300)
-  const newMoney = new Money({
-    userId: message.author.id,
-    money: randomcash
+  Money.findOne({userID: message.author.id}, (err, data) => {
+    data.money = data.money + randomcash
+    data.save()
+    em
+    .setTitle("You worked at the office today!")
+    .setDescription(`Earnings: **${randomcash}** -------- Balance: ${data.money}`)
+    .setTimestamp()
+    .setColor("GREEN")
+    message.channel.send({embed: em})
   })
-  newMoney.save()
-  em
-  .setTitle("You worked at the office today!")
-  .setDescription(`Earnings: **${randomcash}** -------- Balance: ${newMoney.money}`)
-  .setTimestamp()
-  .setColor("GREEN")
-  message.channel.send({embed: em})
 }
 
 module.exports.help = {name: "work"}
