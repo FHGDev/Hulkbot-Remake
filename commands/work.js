@@ -11,7 +11,7 @@ module.exports.execCmd = (bot, message, args) => {
       })
       em
       .setTitle("You worked at the office today!")
-      .setDescription(`Earnings: **${randomcash}** -------- Balance: ${newMoneyz.money}`)
+      .setDescription(`Earnings: **${randomcash}** -------- Balance: **${newMoneyz.money}**`)
       .setTimestamp()
       .setColor("GREEN")
       message.channel.send({embed: em})
