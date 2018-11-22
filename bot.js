@@ -9,3 +9,5 @@ require('fs').readdir('./commands/', (err, files) => {
       bot.commands.set(require(`./commands/${f}`).help.name, require(`./commands/${f}`));
    })
 })
+
+bot.login(process.env.tok)
