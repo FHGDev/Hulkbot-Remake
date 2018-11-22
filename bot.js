@@ -23,7 +23,7 @@ bot.on('message', message => {
   const cmd = bot.commands.get(log_cmd)
   
   if (!message.content.startsWith(prefix)) return;
-  if (!message.author.bot) return;
+  if (message.author.bot) return;
   if (!message.guild) return;
   
   if (cmd) {
